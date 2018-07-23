@@ -33,14 +33,16 @@ pip install pybiomart
 After setup the trio_analysis folder should look this this:  
 
 ```
-trio_analysis
-  |-- validated_bed_files         Validated BED files.
-  |-- trio_env                    Virtual environment.
-  |-- panelapp_bed_files          Output location for panelApp BED files.
+trio_analysis/
+  |-- validated_bed_files/        Validated BED files.
+  |-- trio_env/                   Generated with the virtual environment.
   |-- query_panelapp.py           From this repo.
   |-- hg19.genome                 For BEDTools slop. From this repo.
   |-- apply_panel_trios.py        From this repo.
-  |-- .pybiomart.sqlite           Made during pybiomart installation.
+  |-- .pybiomart.sqlite           Generated during pybiomart installation.
+
+temp/
+  |-- panelapp_bed_files/         Output location for panelApp BED files. This is saved in the temp folder because it is a mapped drive.
 ```
 
 ## Creating a PanelApp BED file  
