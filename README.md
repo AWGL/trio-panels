@@ -14,9 +14,10 @@ The VariantReporterSpark trio analysis pipeline produces a txt file output conta
 - Make new directory called trio_analysis
 - Clone this repo into the new directory
 - Make folders to save BED files
-- Setup a virtual environemnt within this directory, install pandas and pybiomart  
+- Setup a virtual environment within this directory, install pandas and pybiomart  
 
 In Python 2:
+
 ```
 virtualenv <path_to_trio_folder>/trio_analysis/trio_env
 pip install pandas
@@ -24,9 +25,9 @@ pip install pybiomart
 ```
 
 - Change variables in capitals at top of each script before running
-    - ```BEDTOOLS_FILEPATH``` - path to bin folder of BEDTools installation
-    - ```GENOME_FILEPATH``` - path to hg19.genome file
-    - ```OUTPUT_LOCATION``` - path to panelapp_bed_files folder
+  - ```BEDTOOLS_FILEPATH``` - path to bin folder of BEDTools installation
+  - ```GENOME_FILEPATH``` - path to hg19.genome file
+  - ```OUTPUT_LOCATION``` - path to panelapp_bed_files folder
 
 ### Files
 
@@ -50,6 +51,7 @@ temp/
 You can either apply your own panel to the trio variant report, or you can use this script to produce a BED file from a PanelApp panel.  
 
 - Activate the virtual environment  
+
 ```source trio_env/bin/activate```  
 
 - Run the script to create the panel. PanelApp ID can be found on the PanelApp website.  
@@ -60,6 +62,7 @@ You can either apply your own panel to the trio variant report, or you can use t
 - Once this BED file has been checked, move it into the ```validated_bed_files``` folder
 
 - Deactivate virtual environment  
+
 ```deactivate```  
 
 ## Applying a panel to the trio variant report  
@@ -67,10 +70,13 @@ You can either apply your own panel to the trio variant report, or you can use t
 - If not already active, activate the virtual environment  
 Within the trio_analysis folder: ```source trio_env/bin/activate```  
 
-- Apply panel(s) to trio variant report  
+- Apply panel(s) to trio variant report. The BED file can be either a PanelApp BED file made in the step above, or any other BED file.  
 ```python apply_panel_trios.py <path_to_variant_report> <path_to_BED_file> [OPTIONAL: <path_to_more_BED_files>]```  
 
-- This will output two folders in the same results folder as the original trio variant report - ```<trio_variant_report>_<panel_name>.txt``` and ```<trio_variant_report>_DE_NOVO.txt```
+- This will output two folders in the same results folder as the original trio variant report:
+  - ```<trio_variant_report>_<panel_name(s)>.txt``` - The variant calls in the report that fall within the selected BED file(s)
+  - ```<trio_variant_report>_DE_NOVO.txt``` - All *de novo* variant calls (the scientists will look at all *de novo* calls, this part of the script ensures that they don't accidentally see any other results while filtering the original file.)
 
 - Deactivate virtual environment  
+
 ```deactivate```  
