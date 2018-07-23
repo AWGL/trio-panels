@@ -179,7 +179,7 @@ def filter_denovo(report_input):
 
     # Make headers
     header = (
-        '#Filtered: DE NOVO calls only. Date: ' + str(datetime.datetime.now())
+        '#Filtered: DE NOVO calls only. Date: ' + str(datetime.date.today())
     )
     header_list = [[header]]
 
