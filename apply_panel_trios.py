@@ -137,7 +137,7 @@ def apply_panel(report_input, panel_name, intersect):
     to the report name.
     '''
 
-    # Make headeer with panel info
+    # Make header with panel info
     header = (
         '#Panel(s) applied: ' + str(panel_name).replace('_', ' ') + '. Date: '
         + str(datetime.date.today()))
