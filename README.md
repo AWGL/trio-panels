@@ -11,17 +11,23 @@ This repository contains two scripts:
 
 - ```apply_panel_trios.py```: this script takes one or more panels and applies them to the trio variant report output. It also outputs a seperate file containing all *de novo* calls.
 
-## Requirements  
+---
+
+## Setup
+
+### Requirements  
 
 - Python 2.7.8 (the scripts should run with Python 3 but this hasn't been tested)
 - virtualenv (or venv with python 3)
 - pybiomart (version 0.2.0)
 - pandas (version 0.23.3)
 
-### Setup
+### Setup instructions
 
-- Clone this repo into the new directory called trio_analysis
-- Make folders to save BED files
+- Clone this reposirory into the new directory called trio_analysis
+- Make folders to save BED files - described below
+  - panelapp_bed_files
+  - validated_bed_files
 - Setup a virtual environment within this directory, install pandas and pybiomart  
 
 In Python 2:
@@ -47,7 +53,7 @@ trio_analysis/
                                     been checked).
   |-- trio_env/                   Generated with the virtual environment.
   |-- query_panelapp.py           From this repo.
-  |-- hg19.genome                 For BEDTools slop. From this repo.
+  |-- hg19.genome                 Gives the size of each chromosome, required for BEDTools slop. From this repo.
   |-- apply_panel_trios.py        From this repo.
   |-- .pybiomart.sqlite           Generated during pybiomart installation.
 
@@ -57,10 +63,12 @@ temp/
                                     validated_bed_files when done.
 ```
 
+---
+
 ## Applying a panel to the trio variant report  
 
 This script applies one or more BED file to the trio analysis variant report.  
-The BED file can be either a PanelApp BED file made in the step above, or any other BED file. 
+The BED file can be either a PanelApp BED file made in the step below, or any other BED file. 
 
 More than one BED file can be inputted, just add each file as an optional extra input.  
 
@@ -83,6 +91,8 @@ If you need to make a BED file from PanelApp, see the next section before contin
 
 - Deactivate virtual environment: ```deactivate```
 
+---
+
 ## Creating a PanelApp BED file  
 
 This script takes a PanelAppID and queries the PanelApp and BioMart APIs produce a BED file from a PanelApp panel.  
@@ -92,6 +102,8 @@ By default, the output will contain only green genes and will have padding of 20
 The code can easily be changed to change these settings.  
 
 All new BED files must be double checked by a scientist before being used for reporting; BED files are outputted into the panelapp_bed_files folder. Once the file has been checked, it should be copied into the validated_bed_files folder.
+
+### Second checking BED files
 
 ### Instructions for running the script
 
