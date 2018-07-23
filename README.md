@@ -1,6 +1,14 @@
 # Apply panels to trio analysis output
 
-The VariantReporterSpark trio analysis pipeline produces a txt file output containing a list of variants with no panel applied. This script takes one or more panels and applies them to the trio variant report output.
+The VariantReporterSpark trio analysis pipeline produces a txt file output containing a list of variants with no panel applied.
+The clinical scientist has to analyse all *de novo* calls from this text file, and all variant calls within a certain panel.
+The panel applied depends on the phenotype of the patient and most of the time it will be taken from PanelApp.  
+
+This repository contains two scripts:
+
+- ```query_panelapp.py```: This script queries PanelApp and makes a BED file of the genes within a panel.
+
+- ```apply_panel_trios.py```: this script takes one or more panels and applies them to the trio variant report output. It also outputs a seperate file containing all *de novo* calls.
 
 ## Requirements  
 
