@@ -57,6 +57,32 @@ temp/
                                     validated_bed_files when done.
 ```
 
+## Applying a panel to the trio variant report  
+
+This script applies one or more BED file to the trio analysis variant report.  
+The BED file can be either a PanelApp BED file made in the step above, or any other BED file. 
+
+More than one BED file can be inputted, just add each file as an optional extra input.  
+
+Once the clinical scientist has confirmed the panel(s) that they will apply, they will email the bioinformatics department requesting that the panel is applied to the report.
+
+### Instructions for running the script
+
+- If you already have the necessary BED files, follow the instructions below to apply the panel.
+If you need to make a BED file from PanelApp, see the next section before continuing.
+
+- If not already active, activate the virtual environment: ```source trio_env/bin/activate```
+
+- Apply panel(s) to trio variant report. 
+
+```python apply_panel_trios.py <path_to_variant_report> <path_to_BED_file> [OPTIONAL: <path_to_more_BED_files>]```
+
+- This will output two files in the same results folder as the original trio variant report:
+  - ```<trio_variant_report>_<panel_name(s)>.txt``` - The variant calls in the report that fall within the selected BED file(s)
+  - ```<trio_variant_report>_DE_NOVO.txt``` - All *de novo* variant calls (the scientists will look at all *de novo* calls, this part of the script ensures that they don't accidentally see any other results while filtering the original file.)
+
+- Deactivate virtual environment: ```deactivate```
+
 ## Creating a PanelApp BED file  
 
 This script takes a PanelAppID and queries the PanelApp and BioMart APIs produce a BED file from a PanelApp panel.  
@@ -78,25 +104,5 @@ All new BED files must be double checked by a scientist before being used for re
 - This will save a BED file of the selected panel within the ```panelapp_bed_files``` folder.
 
 - Once this BED file has been checked, move it into the ```validated_bed_files``` folder.
-
-- Deactivate virtual environment: ```deactivate```
-
-## Applying a panel to the trio variant report  
-
-This script applies one or more BED file to the trio analysis variant report.  
-The BED file can be either a PanelApp BED file made in the step above, or any other BED file. 
-More than one BED file can be inputted, just add each file as an optional extra input.
-
-### Instructions for running the script
-
-- If not already active, activate the virtual environment: ```source trio_env/bin/activate```
-
-- Apply panel(s) to trio variant report. 
-
-```python apply_panel_trios.py <path_to_variant_report> <path_to_BED_file> [OPTIONAL: <path_to_more_BED_files>]```
-
-- This will output two files in the same results folder as the original trio variant report:
-  - ```<trio_variant_report>_<panel_name(s)>.txt``` - The variant calls in the report that fall within the selected BED file(s)
-  - ```<trio_variant_report>_DE_NOVO.txt``` - All *de novo* variant calls (the scientists will look at all *de novo* calls, this part of the script ensures that they don't accidentally see any other results while filtering the original file.)
 
 - Deactivate virtual environment: ```deactivate```
