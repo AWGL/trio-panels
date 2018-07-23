@@ -182,7 +182,7 @@ def add_padding(output_location, output_name, header, padding=20):
 
     # Save output
     output_bed = open(output_bed_file, 'w')
-    output_bed.write(str(header) + '. Padding: ' + str(padding) + 'bp. \n')
+    output_bed.write(str(header) + '|Padding: ' + str(padding) + 'bp \n')
     output_bed.write(padded_bed)
     output_bed.close()
     print('Padding:       ' + str(padding))
@@ -205,10 +205,10 @@ output_name = (panel_data["SpecificDiseaseName"][0].replace(" ", "_") + "_v"
     + panel_data["version"][0] + '_' + genes.replace(',', '_').lower())
 
 # Make BED file header from variables
-header = ('#PanelApp: ' + panel_data["SpecificDiseaseName"][0] + ' v' 
-    + panel_data["version"][0] + '. PanelApp ID: ' + panel + '. Genes: ' 
-    + genes + '. Group: ' + panel_data["DiseaseGroup"][0] + '. Subgroup: ' 
-    + panel_data["DiseaseSubGroup"][0] + '. Date created: ' 
+header = ('#PanelApp panel: ' + panel_data["SpecificDiseaseName"][0] + ' v' 
+    + panel_data["version"][0] + '|PanelApp ID: ' + panel + '|Genes: ' 
+    + genes + '|Group: ' + panel_data["DiseaseGroup"][0] + '|Subgroup: ' 
+    + panel_data["DiseaseSubGroup"][0] + '|Date created: ' 
     + str(datetime.date.today()))
 
 # Make BED file and add padding

@@ -139,7 +139,7 @@ def apply_panel(report_input, panel_name, intersect):
 
     # Make headeer with panel info
     header = (
-        '#Panel applied: ' + str(panel_name) + '. Date: ' 
+        '#Panel(s) applied: ' + str(panel_name).replace('_', ' ') + '. Date: '
         + str(datetime.date.today()))
     header_list = [[header]]
 
