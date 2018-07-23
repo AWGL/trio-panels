@@ -50,7 +50,7 @@ You can either apply your own panel to the trio variant report, or you can use t
 - Activate the virtual environment  
 ```source trio_env/bin/activate```  
 
-- Create panel  
+- Run the script to create the panel. PanelApp ID can be found on the PanelApp website.  
 ```python query_panelapp.py <PanelApp_ID>```  
 
 - This will save a BED file of the selected panel within the ```panelapp_bed_files``` folder
