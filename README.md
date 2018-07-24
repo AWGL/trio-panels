@@ -34,9 +34,7 @@ It also outputs a seperate file containing all *de novo* calls, this ensures tha
   - `panelapp_bed_files`: Output location for PanelApp BED files from the `query_panelapp.py` program. 
   This is saved in the temp folder because it is a mapped drive that can be accessed from normal workstations. 
   - `validated_bed_files`: Bioinformatics department move BED files from `panelapp_bed_files` to here after they've been checked by a clinical scientist.
-- Setup a virtual environment within this directory, install pandas and pybiomart.
-
-In Python 2:
+- Setup a virtual environment within this directory, install pandas and pybiomart:
 
 ```
 virtualenv <path_to_trio_folder>/trio_analysis/trio_env
