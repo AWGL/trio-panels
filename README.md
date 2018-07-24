@@ -76,7 +76,7 @@ temp/
 
 - Once you have the necessary BED files, follow the instructions in **Section 5. Applying a panel to the trio variant report** to apply the panel(s).
 
-- Once the script has run, let the scientist know that the results are ready.
+- Once the script has run, let the clinical scientist know that the results are ready.
 
 ---
 
