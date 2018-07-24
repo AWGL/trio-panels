@@ -83,7 +83,7 @@ temp/
 ## 4. Creating a PanelApp BED file - `query_panelapp.py`  
 
 This script takes a PanelApp ID and queries the PanelApp and BioMart APIs produce a BED file from a PanelApp panel.  
-If you already have the necessary BED files then you do not need to complete this section.
+If you already have the necessary BED files then you can skip this section.
 
 By default, the output will contain only green genes and will have padding of 20 base pairs on either side of the intervals.
 The code can easily be modified to change these settings (see comments in code).  
