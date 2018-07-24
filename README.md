@@ -13,8 +13,8 @@ This repository contains two scripts that allow this analysis to take place:
 
 - `query_panelapp.py`: This script takes a PanelApp ID and makes a BED file of all the green genes within that panel.
 
-- `apply_panel_trios.py`: This script takes one or more BED files (i.e. panels) and applies them to the trio variant report output, outputting only the variant calls found within the virtual panel(s). 
-It also outputs a seperate file containing all *de novo* calls, this ensures that they don't accidentally see any other results while filtering the original file.
+- `apply_panel_trios.py`: This script takes one or more BED files (i.e. panels) and applies them to the trio variant report, outputting only the variant calls found within the virtual panel(s). 
+It also outputs a seperate file containing all *de novo* calls, this ensures that the clinical scientists don't accidentally see any other results while filtering the original file.
 
 ---
 
