@@ -5,7 +5,7 @@
 The VariantReporterSpark trio analysis pipeline produces a text file output containing a list of variants (and annotations) without any panels applied.
 
 The clinical scientist applies a virtual panel to the report and analyses all variant calls within this panel.
-The panel applied depends on the phenotype of the patient and most of the time it will be taken from PanelApp (https://panelapp.genomicsengland.co.uk).
+The panel applied depends on the phenotype of the patient and most of the time it will be taken from PanelApp (<https://panelapp.genomicsengland.co.uk>).
 
 Additionally, all *de novo* calls are analysed, regardless of whether they are within a panel or not.
 
@@ -13,8 +13,7 @@ This repository contains two scripts that allow this analysis to take place:
 
 - `query_panelapp.py`: This script takes a PanelApp ID and makes a BED file of all the green genes within that panel.
 
-- `apply_panel_trios.py`: This script takes one or more BED files (i.e. panels) and applies them to the trio variant report, outputting only the variant calls found within the virtual panel(s). 
-It also outputs a seperate file containing all *de novo* calls, this ensures that the clinical scientists don't accidentally see any other results while filtering the original file.
+- `apply_panel_trios.py`: This script takes one or more BED files (i.e. panels) and applies them to the trio variant report, outputting only the variant calls found within the virtual panel(s). It also outputs a seperate file containing all *de novo* calls, this ensures that the clinical scientists don't accidentally see any other results while filtering the original file.
 
 ---
 
@@ -31,8 +30,8 @@ It also outputs a seperate file containing all *de novo* calls, this ensures tha
 
 - Clone this reposirory into the new directory, in this case called `trio_analysis`.
 - Make folders to save BED files (see Section 4 for details about the different folders):
-  - `panelapp_bed_files`: Output location for PanelApp BED files from the `query_panelapp.py` program. 
-  This is saved in the temp folder because it is a mapped drive that can be accessed from normal workstations. 
+  - `panelapp_bed_files`: Output location for PanelApp BED files from the `query_panelapp.py` program.
+  This is saved in the temp folder because it is a mapped drive that can be accessed from normal workstations.
   - `validated_bed_files`: Bioinformatics department move BED files from `panelapp_bed_files` to here after they've been checked by a clinical scientist.
 - Setup a virtual environment within this directory, install pandas and pybiomart:
 
@@ -88,18 +87,18 @@ If you already have the necessary BED files then you can skip this section.
 By default, the output will contain only green genes and will have padding of 20 base pairs on either side of the intervals.
 The code can easily be modified to change these settings:
 
-- **Green genes -** `query_panelapp.py` line 201: 
+- **Green genes -** `query_panelapp.py` line 201:
 
 Add either `amber=True` or `red=True` to arguments. Default is `green=True, amber=False, red=False`.
 
-- **Padding -** `query_panelapp.py` line 216: 
+- **Padding -** `query_panelapp.py` line 216:
 
-Add `padding=X` to arguments, where X is an integer (no speech marks around the number). 
+Add `padding=X` to arguments, where X is an integer (no speech marks around the number).
 Default is `padding=20`.  
 
 ### Second checking new BED files
 
-All new BED files must be double checked by a clinical scientist before being used for reporting. 
+All new BED files must be double checked by a clinical scientist before being used for reporting.
 BED files are outputted into the `panelapp_bed_files` folder on the temp drive.
 This drive should be accessible from all workstations, if not then ask the bioinformatics department about getting the drive mapped.
 
@@ -116,7 +115,7 @@ BED files in the `validated_bed_files` folder are ready to be used for analysis.
 
 `python query_panelapp.py <PanelApp_ID>`
 
-> **NOTE:** PanelApp ID can be found on the PanelApp website - the most reliable way to find it is to navigate to the web page containing the list of genes within the panel, the ID is the number in the last section of the website path. For example, in https://panelapp.genomicsengland.co.uk/panels/245/, the PanelApp ID is 245.
+> **NOTE:** PanelApp ID can be found on the PanelApp website - the most reliable way to find it is to navigate to the web page containing the list of genes within the panel, the ID is the number in the last section of the website path. For example, in <https://panelapp.genomicsengland.co.uk/panels/245/>, the PanelApp ID is 245.
 
 - Deactivate virtual environment: `deactivate`
 
@@ -129,7 +128,7 @@ BED files in the `validated_bed_files` folder are ready to be used for analysis.
 ## 5. Applying a panel to the trio variant report - `apply_panel_trios.py`  
 
 This script applies one or more BED file to the trio analysis variant report.  
-The BED file can be either a PanelApp BED file made in Section 4, or any other BED file. 
+The BED file can be either a PanelApp BED file made in Section 4, or any other BED file.
 More than one BED file can be inputted, just add each file as an optional extra input.  
 
 > **NOTE: Second checking BED files.** All new BED files must be second checked by a clinical scientist before being used for reporting, see **Section 4 - Second checking new BED** files for details.
@@ -141,7 +140,7 @@ This means that the clinical scientist doesn't have to manually go into the file
 
 - If not already active, activate the virtual environment: `source trio_env/bin/activate`
 
-- Apply panel(s) to trio variant report: 
+- Apply panel(s) to trio variant report:
 
 `python apply_panel_trios.py <path_to_variant_report> <path_to_BED_file> [OPTIONAL: <path_to_more_BED_files>]`
 
@@ -150,4 +149,3 @@ This means that the clinical scientist doesn't have to manually go into the file
   - `<trio_variant_report>_DE_NOVO.txt` - All *de novo* variant calls.
 
 - Deactivate virtual environment: `deactivate`
-
