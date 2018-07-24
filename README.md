@@ -30,7 +30,7 @@ It also outputs a seperate file containing all *de novo* calls, this ensures tha
 ### Setup instructions
 
 - Clone this reposirory into the new directory, in this case called `trio_analysis`.
-- Make folders to save BED files (see Section 5 for details about the different folders):
+- Make folders to save BED files (see Section 4 for details about the different folders):
   - `panelapp_bed_files`: Output location for PanelApp BED files from the `query_panelapp.py` program. 
   This is saved in the temp folder because it is a mapped drive that can be accessed from normal workstations. 
   - `validated_bed_files`: Bioinformatics department move BED files from `panelapp_bed_files` to here after they've been checked by a clinical scientist.
@@ -72,46 +72,19 @@ temp/
 
 - Once the clinical scientist/ clinician has decided the panel(s) that they will apply, they will email the bioinformatics department requesting that the panel is applied to the report.
 
-- If you need to make a BED file from PanelApp, see **Section 5. Creating a PanelApp BED file** before continuing.
+- If you need to make a BED file from PanelApp, follow the instructions in **Section 4. Creating a PanelApp BED file**. If you already have the BED files, you can skip this section.
 
-> **NOTE: Second checking BED files.** All new BED files must be second checked by a clinical scientist before being used for reporting, see Section 5 for details.
+> **NOTE: Second checking BED files.** All new BED files must be second checked by a clinical scientist before being used for reporting, see **Section 4 - Second checking new BED** files for details.
 
-- If you have the necessary BED files, follow the instructions in **Section 4. Applying a panel to the trio variant report** to apply the panel(s).
+- Once you have the necessary BED files, follow the instructions in **Section 5. Applying a panel to the trio variant report** to apply the panel(s).
 
 - Once the script has run, let the scientist know that the results are ready.
 
 ---
 
-## 4. Applying a panel to the trio variant report - `apply_panel_trios.py`  
+## 4. Creating a PanelApp BED file - `query_panelapp.py`  
 
-This script applies one or more BED file to the trio analysis variant report.  
-The BED file can be either a PanelApp BED file made in Section 5, or any other BED file. 
-More than one BED file can be inputted, just add each file as an optional extra input.  
-
-> **NOTE: Second checking BED files.** All new BED files must be second checked by a clinical scientist before being used for reporting, see Section 5 for details.
-
-This script also outputs a seperate file containing all *de novo* calls, regardless of whether they fall into the panel(s) or not.
-This means that the clinical scientist doesn't have to manually go into the file and filter the results, so they are less likely to accidentally come across any incidental findings.
-
-### Instructions for running the script
-
-- If not already active, activate the virtual environment: `source trio_env/bin/activate`
-
-- Apply panel(s) to trio variant report: 
-
-`python apply_panel_trios.py <path_to_variant_report> <path_to_BED_file> [OPTIONAL: <path_to_more_BED_files>]`
-
-- This will output two files in the same results folder as the original trio variant report:
-  - `<trio_variant_report>_<panel_name(s)>.txt` - The variant calls in the report that fall within the selected BED file(s).
-  - `<trio_variant_report>_DE_NOVO.txt` - All *de novo* variant calls.
-
-- Deactivate virtual environment: `deactivate`
-
----
-
-## 5. Creating a PanelApp BED file - `query_panelapp.py`  
-
-This script takes a PanelAppID and queries the PanelApp and BioMart APIs produce a BED file from a PanelApp panel.  
+This script takes a PanelApp ID and queries the PanelApp and BioMart APIs produce a BED file from a PanelApp panel.  
 If you already have the necessary BED files then you do not need to complete this section.
 
 By default, the output will contain only green genes and will have padding of 20 base pairs on either side of the intervals.
@@ -143,3 +116,31 @@ BED files in the `validated_bed_files` folder are ready to be used for analysis.
 - This will save two BED files of the selected panel within the `panelapp_bed_files` folder, one with padding and another without.
 
 - Once the relevant BED file has been checked by a clinical scientist, move it into the `validated_bed_files` folder.
+
+---
+
+## 5. Applying a panel to the trio variant report - `apply_panel_trios.py`  
+
+This script applies one or more BED file to the trio analysis variant report.  
+The BED file can be either a PanelApp BED file made in Section 4, or any other BED file. 
+More than one BED file can be inputted, just add each file as an optional extra input.  
+
+> **NOTE: Second checking BED files.** All new BED files must be second checked by a clinical scientist before being used for reporting, see **Section 4 - Second checking new BED** files for details.
+
+This script also outputs a seperate file containing all *de novo* calls, regardless of whether they fall into the panel(s) or not.
+This means that the clinical scientist doesn't have to manually go into the file and filter the results, so they are less likely to accidentally come across any incidental findings.
+
+### Instructions for running the script
+
+- If not already active, activate the virtual environment: `source trio_env/bin/activate`
+
+- Apply panel(s) to trio variant report: 
+
+`python apply_panel_trios.py <path_to_variant_report> <path_to_BED_file> [OPTIONAL: <path_to_more_BED_files>]`
+
+- This will output two files in the same results folder as the original trio variant report:
+  - `<trio_variant_report>_<panel_name(s)>.txt` - The variant calls in the report that fall within the selected BED file(s).
+  - `<trio_variant_report>_DE_NOVO.txt` - All *de novo* variant calls.
+
+- Deactivate virtual environment: `deactivate`
+
