@@ -7,7 +7,7 @@ The VariantReporterSpark trio analysis pipeline produces a text file output cont
 The clinical scientist applies a virtual panel to the report and analyses all variant calls within this panel.
 The panel applied depends on the phenotype of the patient and most of the time it will be taken from PanelApp (https://panelapp.genomicsengland.co.uk).
 
-Additionally, all *de novo* calls are anlaysed, regardless of whether they are within a panel or not.
+Additionally, all *de novo* calls are analysed, regardless of whether they are within a panel or not.
 
 This repository contains two scripts that allow this analysis to take place:
 
