@@ -86,7 +86,10 @@ This script takes a PanelApp ID and queries the PanelApp and BioMart APIs produc
 If you already have the necessary BED files then you can skip this section.
 
 By default, the output will contain only green genes and will have padding of 20 base pairs on either side of the intervals.
-The code can easily be modified to change these settings (see comments in code).  
+The code can easily be modified to change these settings:
+- Green genes: `query_panelapp.py` Line 201 - add either `amber=True` or `red=True` to arguments. Default is `green=True, amber=False, red=False`.
+- Padding: `query_panelapp.py` Line 216 - add `padding=X` to arguments, should be an integer (no speech marks around the number). 
+Default is `padding=20`.  
 
 ### Second checking new BED files
 
