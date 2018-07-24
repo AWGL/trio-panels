@@ -198,7 +198,7 @@ panel = str(sys.argv[1])
 panel_df, panel_data = get_panel(panel)
 
 # Extract list of Ensemble IDs and filter on level of evidence
-ensembl_ids, genes = get_gene_ids(panel_df)
+ensembl_ids, genes = get_gene_ids(panel_df)  # Change green/amber/red
 
 # Make output filename from variables
 output_name = (panel_data["SpecificDiseaseName"][0].replace(" ", "_") + "_v"
@@ -213,6 +213,6 @@ header = ('#PanelApp panel: ' + panel_data["SpecificDiseaseName"][0] + ' v'
 
 # Make BED file and add padding
 save_as_bed(ensembl_ids, OUTPUT_LOCATION, output_name, header)
-add_padding(OUTPUT_LOCATION, output_name, header)
+add_padding(OUTPUT_LOCATION, output_name, header)  # Change padding
 
 print('\nDone.')
