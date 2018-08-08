@@ -201,7 +201,7 @@ panel_df, panel_data = get_panel(panel)
 ensembl_ids, genes = get_gene_ids(panel_df)  # Change green/amber/red
 
 # Make output filename from variables
-output_name = (panel_data["SpecificDiseaseName"][0].replace(" ", "_") + "_v"
+output_name = (panel_data["SpecificDiseaseName"][0].replace(" ", "_").replace('/', '_').replace('(', '_').replace(')', '_') + "_v"
     + panel_data["version"][0] + '_' + genes.replace(',', '_').lower())
 
 # Make BED file header from variables
