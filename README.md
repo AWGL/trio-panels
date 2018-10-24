@@ -19,7 +19,7 @@ This repository contains two scripts that allow this analysis to take place:
 
 ## 2. Setup
 
-### Requirements  
+### Requirements
 
 - Python 2.7.8 (the scripts should run with Python 3 but this hasn't been tested)
 - virtualenv (or venv with python 3)
@@ -45,6 +45,7 @@ pip install pybiomart
   - `BEDTOOLS_FILEPATH` - path to `bin` folder of BEDTools installation.
   - `GENOME_FILEPATH` - path to `hg19.genome` file (required for BEDTools slop).
   - `OUTPUT_LOCATION` - path to `panelapp_bed_files` folder.
+  - `PADDING` - amount of padding to add to the BED file - default is 20.
 
 ### Files
 
@@ -149,3 +150,15 @@ This means that the clinical scientist doesn't have to manually go into the file
   - `<trio_variant_report>_DE_NOVO.txt` - All *de novo* variant calls.
 
 - Deactivate virtual environment: `deactivate`
+
+## Testing and Validation
+
+The scripts can be tested by typing:
+
+`python -m test.tests`
+
+in the root directory of the application.
+
+
+
+

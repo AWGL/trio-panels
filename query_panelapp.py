@@ -25,33 +25,12 @@ import datetime
 ## SET FILEPATHS ------------------------------------------------------
 
 
-BEDTOOLS_FILEPATH = '/Users/erik/Applications/bedtools2/bin/'
-GENOME_FILEPATH = '/Users/erik/Projects/Trio_panelapp/hg19.genome'
-OUTPUT_LOCATION = '/Users/erik/Desktop/panels/'
-
+BEDTOOLS_FILEPATH = 'bedtools'
+GENOME_FILEPATH = '/Users/josephhalstead/Documents/trio-panels/hg19.genome'
+OUTPUT_LOCATION = '/Users/josephhalstead/Documents/trio-panels/panels/'
+PADDING = 20
 
 ## DEFINE FUNCTIONS ---------------------------------------------------
-
-
-def list_all_panels():
-    '''
-    Extract full list of panels from PanelApp API and store as a pandas
-    dataframe.
-
-    NOTE: NOT CURRENTLY USED - can be used in future to make a tool to
-    select a panel through a GUI, rather than inputting the panel ID
-    through the command line.
-    '''
-
-    # Query PanelApp API
-    url = "https://panelapp.genomicsengland.co.uk/WebServices/list_panels/"
-    response = requests.get(url)
-    data = response.json()
-
-    # Extract info of all panels within panel app
-    all_panels = pd.io.json.json_normalize(data["result"])
-    return(all_panels)
-
 
 def get_panel(panel_id):
     '''
@@ -61,8 +40,12 @@ def get_panel(panel_id):
     '''
 
     # Query PanelApp API
+    # Allow user to pass in version for testing purposes
+
+
     url = ("https://panelapp.genomicsengland.co.uk/WebServices/get_panel/"
-     + panel_id + "/")
+    + panel_id + "/")
+
     panel_response = requests.get(url)
     panel_data = panel_response.json()
 
@@ -87,7 +70,7 @@ def get_gene_ids(panel_df, green=True, amber=False, red=False):
     bed file header.
 
     NOTE: There is another option other than green, amber and red -
-    'NoList'. This might mean that numbers dont add up if comaring to
+    'NoList'. This might mean that numbers dont add up if comparing to
     the PanelApp website.
     '''
 
@@ -136,7 +119,7 @@ def save_as_bed(ensembl_ids, output_location, output_name, header):
     file with a header containing the panel information.
 
     NOTE: Loop through one by one as biomart cant deal with lots of
-    inputs (not sure what max is - cound speed this up using batches?)
+    inputs (not sure what max is - could speed this up using batches?)
     '''
 
     # Load in pybiomart dataset - GRCh37
@@ -164,7 +147,7 @@ def save_as_bed(ensembl_ids, output_location, output_name, header):
     csv_out.close()
 
 
-def add_padding(output_location, output_name, header, padding=20):
+def add_padding(output_location, output_name, header, padding):
     '''
     Take in BED file and apply padding using BEDTools slop tool,
     outputs identical BED file with added padding.
@@ -190,29 +173,30 @@ def add_padding(output_location, output_name, header, padding=20):
 
 ## CALL FUNCTIONS -----------------------------------------------------
 
+if __name__ == "__main__":
 
-print('Downloading panel...\n')
+    print('Downloading panel...\n')
 
-# Take panel ID as argument, get panel gene list and meta data
-panel = str(sys.argv[1])
-panel_df, panel_data = get_panel(panel)
+    # Take panel ID as argument, get panel gene list and meta data
+    panel = str(sys.argv[1])
+    panel_df, panel_data = get_panel(panel)
 
-# Extract list of Ensemble IDs and filter on level of evidence
-ensembl_ids, genes = get_gene_ids(panel_df)  # Change green/amber/red
+    # Extract list of Ensemble IDs and filter on level of evidence
+    ensembl_ids, genes = get_gene_ids(panel_df)  # Change green/amber/red
 
-# Make output filename from variables
-output_name = (panel_data["SpecificDiseaseName"][0].replace(" ", "_").replace('/', '_').replace('(', '_').replace(')', '_') + "_v"
-    + panel_data["version"][0] + '_' + genes.replace(',', '_').lower())
+    # Make output filename from variables
+    output_name = (panel_data["SpecificDiseaseName"][0].replace(" ", "_").replace('/', '_').replace('(', '_').replace(')', '_') + "_v"
+        + panel_data["version"][0] + '_' + genes.replace(',', '_').lower())
 
-# Make BED file header from variables
-header = ('#PanelApp panel: ' + panel_data["SpecificDiseaseName"][0] + ' v' 
-    + panel_data["version"][0] + '|PanelApp ID: ' + panel + '|Genes: ' 
-    + genes + '|Group: ' + panel_data["DiseaseGroup"][0] + '|Subgroup: ' 
-    + panel_data["DiseaseSubGroup"][0] + '|Date created: ' 
-    + str(datetime.date.today()))
+    # Make BED file header from variables
+    header = ('#PanelApp panel: ' + panel_data["SpecificDiseaseName"][0] + ' v' 
+        + panel_data["version"][0] + '|PanelApp ID: ' + panel + '|Genes: ' 
+        + genes + '|Group: ' + panel_data["DiseaseGroup"][0] + '|Subgroup: ' 
+        + panel_data["DiseaseSubGroup"][0] + '|Date created: ' 
+        + str(datetime.date.today()))
 
-# Make BED file and add padding
-save_as_bed(ensembl_ids, OUTPUT_LOCATION, output_name, header)
-add_padding(OUTPUT_LOCATION, output_name, header)  # Change padding
+    # Make BED file and add padding
+    save_as_bed(ensembl_ids, OUTPUT_LOCATION, output_name, header)
+    add_padding(OUTPUT_LOCATION, output_name, header, padding=PADDING)
 
-print('\nDone.')
+    print('\nDone.')
