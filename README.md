@@ -37,8 +37,7 @@ This repository contains two scripts that allow this analysis to take place:
 
 ```
 virtualenv <path_to_trio_folder>/trio_analysis/trio_env
-pip install pandas
-pip install pybiomart
+pip install -r requirements
 ```
 
 - Change variables in capitals at top of each script before running:
