@@ -1,0 +1,2 @@
+pandas==0.23.3
+pybiomart==0.2.0

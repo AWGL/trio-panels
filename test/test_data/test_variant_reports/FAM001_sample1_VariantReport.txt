@@ -1,0 +1,23 @@
+#VariantReporterSpark v1.3.3 (24/03/18 20:01:05)
+#SampleId	Workflow	VariantId	Genotype	Proband	Father	Mother	dbSNP	Cosmic	HGMD	GnomadExomePopMax	GnomadGenomePopMax	Gene	ModeOfInheritance	DiseaseName	Transcript	PreferredTranscript	HGVSc	HGVSp	Consequences	Intron	Exon	SIFT	PolyPhen
+test_sample_1	DE_NOVO	12:109915190C>T	HET	G/A	G/A	G/G	rs779663563			0.0	0.0	DST	BIALLELIC	Epidermolysis bullosa	NM_001144770.1	false	c.4184C>T	p.Ala1395Val	missense_variant		31|95		benign(0.423)
+test_sample_1	DE_NOVO	6:56492027G>A	HET	G/A	G/A	G/G	rs779663563			0.0	0.0	DST	BIALLELIC	Epidermolysis bullosa	NM_001723.5	false	c.3086C>T	p.Ala1029Val	missense_variant		20|24	deleterious(0)	possibly_damaging(0.657)
+test_sample_1	DE_NOVO	6:56492027G>A	HET	G/A	G/A	G/G	rs779663563			0.0	0.0	DST	BIALLELIC	Epidermolysis bullosa	NM_001144769.2	false	c.4598C>T	p.Ala1533Val	missense_variant		33|97		possibly_damaging(0.478)
+test_sample_1	DE_NOVO	6:56492027G>A	HET	G/A	G/A	G/G	rs779663563			0.0	0.0	DST	BIALLELIC	Epidermolysis bullosa	NM_015548.4	false	c.3086C>T	p.Ala1029Val	missense_variant		20|84		benign(0.423)
+test_sample_1	DE_NOVO	6:56492027G>A	HET	G/A	G/A	G/G	rs779663563			0.0	0.0	DST	BIALLELIC	Epidermolysis bullosa	NM_183380.3	false	c.4064C>T	p.Ala1355Val	missense_variant		30|94		possibly_damaging(0.682)
+test_sample_1	DOMINANT	16:1840735C>T	HET	C/T	C/T	C/C	rs190570821			3.11139E-5	0.0	IGFALS	BIALLELIC	IUGR and IGF abnormalities	NM_004970.2	false	c.1684G>A	p.Val562Ile	missense_variant		2|2	deleterious(0.04)	benign(0.152)
+test_sample_1	DOMINANT	16:1840735C>T	HET	C/T	C/T	C/C	rs190570821			3.11139E-5	0.0	IGFALS	BIALLELIC	IUGR and IGF abnormalities	NM_001146006.1	false	c.1798G>A	p.Val600Ile	missense_variant		2|2	deleterious(0.04)	benign(0.124)
+test_sample_1	DOMINANT	16:1840735C>T	HET	C/T	C/T	C/C	rs190570821			3.11139E-5	0.0	NUBP2			NM_012225.2	false			downstream_gene_variant				
+test_sample_1	DOMINANT	12:64854098A>G	HET	A/G	A/G	A/A	rs751253214			9.5418E-5	1.14469E-4	TBK1	MONOALLELIC|MONOALLELIC_NOT_IMPRINTED	Amyotrophic lateral sclerosis/motor neuron disease|Early onset dementia (encompassing fronto-temporal dementia and prion disease)	NM_013254.3	false	c.217A>G	p.Ile73Val	missense_variant		3|21	tolerated(1)	benign(0.036)
+test_sample_1	DOMINANT	12:64854098A>G	HET	A/G	A/G	A/A	rs751253214			9.5418E-5	1.14469E-4	TBK1	MONOALLELIC|MONOALLELIC_NOT_IMPRINTED	Amyotrophic lateral sclerosis/motor neuron disease|Early onset dementia (encompassing fronto-temporal dementia and prion disease)	NM_013254.3	false	c.217A>G	p.Ile73Val	missense_variant		3|21	tolerated(1)	benign(0.036)
+test_sample_1	DOMINANT	12:111085576C>T	HET	C/T	C/C	C/T	rs182406601			6.84932E-4	0.00119332	HVCN1			NM_032369.3	false			downstream_gene_variant				
+test_sample_1	DOMINANT	12:111085576C>T	HET	C/T	C/C	C/T	rs182406601			6.84932E-4	0.00119332	TCTN1	BIALLELIC	Rare multisystem ciliopathy disorders	NM_001082537.2	false	c.1643C>T	p.Thr548Met	missense_variant		14|15	deleterious(0.02)	benign(0.185)
+test_sample_1	DOMINANT	12:111085576C>T	HET	C/T	C/C	C/T	rs182406601			6.84932E-4	0.00119332	HVCN1			NM_032369.3	false			downstream_gene_variant				
+test_sample_1	DOMINANT	12:111085576C>T	HET	C/T	C/C	C/T	rs182406601			6.84932E-4	0.00119332	TCTN1	BIALLELIC	Rare multisystem ciliopathy disorders	NM_001082538.2	false	c.1658C>T	p.Thr553Met	missense_variant		14|15	deleterious(0.02)	benign(0.273)
+test_sample_1	DOMINANT	12:111085576C>T	HET	C/T	C/C	C/T	rs182406601			6.84932E-4	0.00119332	TCTN1	BIALLELIC	Rare multisystem ciliopathy disorders	NM_001173976.1	false	c.1331C>T	p.Thr444Met	missense_variant		14|15		
+test_sample_1	DOMINANT	12:111085576C>T	HET	C/T	C/C	C/T	rs182406601			6.84932E-4	0.00119332	HVCN1			NM_001040107.1	false			downstream_gene_variant				
+test_sample_1	DOMINANT	12:111085576C>T	HET	C/T	C/C	C/T	rs182406601			6.84932E-4	0.00119332	HVCN1			NM_001256413.1	false			downstream_gene_variant				
+test_sample_1	DOMINANT	12:111085576C>T	HET	C/T	C/C	C/T	rs182406601			6.84932E-4	0.00119332	HVCN1			NM_001040107.1	false			downstream_gene_variant				
+test_sample_1	DOMINANT	12:111085576C>T	HET	C/T	C/C	C/T	rs182406601			6.84932E-4	0.00119332	TCTN1	BIALLELIC	Rare multisystem ciliopathy disorders	NM_001173975.1	false	c.1475C>T	p.Thr492Met	missense_variant		14|15		
+test_sample_1	DOMINANT	12:111085576C>T	HET	C/T	C/C	C/T	rs182406601			6.84932E-4	0.00119332	TCTN1	BIALLELIC	Rare multisystem ciliopathy disorders	NM_024549.5	false	c.1601C>T	p.Thr534Met	missense_variant		14|15	deleterious(0.02)	benign(0.342)
+test_sample_1	DOMINANT	1:114437355C>T	HET	C/T	C/C	C/T	rs182406601			6.84932E-4	0.00119332	TCTN1	BIALLELIC	Rare multisystem ciliopathy disorders	NM_024549.5	false	c.1601C>T	p.Thr534Met	missense_variant		14|15	deleterious(0.02)	benign(0.342)			

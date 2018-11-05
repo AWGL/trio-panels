@@ -1,0 +1,8 @@
+#VariantReporterSpark v1.3.3 (24/03/18 20:01:05)
+#SampleId	Workflow	VariantId	Genotype	Proband	Father	Mother	dbSNP	Cosmic	HGMD	GnomadExomePopMax	GnomadGenomePopMax	Gene	ModeOfInheritance	DiseaseName	Transcript	PreferredTranscript	HGVSc	HGVSp	Consequences	Intron	Exon	SIFT	PolyPhen
+test_sample_1	DOMINANT	6:56492023TTTTTTTT>AAAAAAAA	HET	G/A	G/A	G/G	rs779663563			0.0	0.0	DST	BIALLELIC	Epidermolysis bullosa	NM_001144770.1	false	c.4184C>T	p.Ala1395Val	missense_variant		31|95		benign(0.423)
+test_sample_1	DOMINANT	6:56492025AAAAAAA>GGGGGGGGGG	HET	G/A	G/A	G/G	rs779663563			0.0	0.0	DST	BIALLELIC	Epidermolysis bullosa	NM_001144770.1	false	c.4184C>T	p.Ala1395Val	missense_variant		31|95		benign(0.423)
+test_sample_1	DE_NOVO	6:56492025A>GGGGGGGGGGGGGGGG	HET	G/A	G/A	G/G	rs779663563			0.0	0.0	DST	BIALLELIC	Epidermolysis bullosa	NM_001144770.1	false	c.4184C>T	p.Ala1395Val	missense_variant		31|95		benign(0.423)
+test_sample_1	DOMINANT	6:56492025AAA>GGGGGGGGGGGGGGGG	HET	G/A	G/A	G/G	rs779663563			0.0	0.0	DST	BIALLELIC	Epidermolysis bullosa	NM_001144770.1	false	c.4184C>T	p.Ala1395Val	missense_variant		31|95		benign(0.423)
+test_sample_1	DOMINANT	6:56492027A>T	HET	G/A	G/A	G/G	rs779663563			0.0	0.0	DST	BIALLELIC	Epidermolysis bullosa	NM_001144770.1	false	c.4184C>T	p.Ala1395Val	missense_variant		31|95		benign(0.423)
+test_sample_1	DOMINANT	6:56492026A>T	HET	G/A	G/A	G/G	rs779663563			0.0	0.0	DST	BIALLELIC	Epidermolysis bullosa	NM_001144770.1	false	c.4184C>T	p.Ala1395Val	missense_variant		31|95		benign(0.423)

@@ -28,13 +28,13 @@ import datetime
 ## SET FILEPATHS ------------------------------------------------------
 
 
-BEDTOOLS_FILEPATH = '/Users/erik/Applications/bedtools2/bin/'
+BEDTOOLS_FILEPATH = ''
 
 
 ## DEFINE FUNCTIONS ---------------------------------------------------
 
 
-def load_variables():
+def load_variables(report_input, panel_input):
     '''
     Takes in report filepath as argument 1, panel(s) to be applied as
     argument 2 onwards. Returns arguments, the report filepath, a 
@@ -43,10 +43,9 @@ def load_variables():
     '''
 
     # Save and print arguments
-    report_input = sys.argv[1]
-    print('Report:      ' + str(sys.argv[1]))
-    panel_input = sys.argv[2:]
-    print('Panel(s):    ' + str(sys.argv[2:]))
+
+    print('Report:      ' + str(report_input))
+    print('Panel(s):    ' + str(panel_input))
 
     # Format list of panels for input to BEDTools programs
     bedtools_input = ''
@@ -78,14 +77,35 @@ def make_report_bed(report_input, report_path):
 
     # Extract variants from variant report and make bed file
     with open(report_input) as report:
+
         results = csv.reader(report, delimiter='\t')
+
         for line in results:
+
             if line[0][0] != '#':
+
                 variant = line[2].split(':')
+                ref = variant[1].split('>')[0].strip('0123456789')
+                alt = variant[1].split('>')[1]
+
+                # If we have an deletion or MNP take this into account when making the report_bed
+                # Basically replicate the behaviour of bedtools intersect on a vcf
+                if len(ref) > 1:
+
+                    start_pos = int(variant[1].strip('AGTC>')) - 1
+                    # 
+                    end_pos = start_pos + len(ref) + 1
+
+                else:
+                
+                    start_pos = int(variant[1].strip('AGTC>')) - 1
+                    end_pos =  variant[1].strip('AGTC>')
+
                 report_bed.write(variant[0] + "\t"
-                    + str(int(variant[1].strip('AGTC>')) - 1)
-                    + "\t" + variant[1].strip('AGTC>') + "\t"
+                    + str(start_pos)
+                    + "\t" + str(end_pos) + "\t"
                     + line[2] + "\n")
+
     report_bed.close()
 
     # Sort bed file and save to a different file
@@ -98,7 +118,7 @@ def make_report_bed(report_input, report_path):
     os.remove(report_bed_filepath)
 
 
-def intersect(report_path):
+def intersect(report_path, bedtools_input):
     '''
     Extract list of unique variants that intersect both sorted BED file
     and panel(s) BED file, using BEDTools intersect command.
@@ -211,21 +231,25 @@ def filter_denovo(report_input):
 
 ## CALL FUNCTIONS -----------------------------------------------------
 
+if __name__ == "__main__":
 
-print('Applying panels...\n')
+    print('Applying panels...\n')
 
-# Load variables
-(report_input, panel_input, bedtools_input, report_path, 
-    panel_name) = load_variables()
+    report_input = sys.argv[1]
+    panel_input = sys.argv[2:]
 
-# Turn trio analysis output into BED file
-make_report_bed(report_input, report_path)
+    # Load variables
+    (report_input, panel_input, bedtools_input, report_path, 
+        panel_name) = load_variables(report_input, panel_input)
 
-# Intersect with panel BED file(s)
-results_intersect_unique = intersect(report_path)
+    # Turn trio analysis output into BED file
+    make_report_bed(report_input, report_path)
 
-# Apply the panel and filter all de novo calls
-apply_panel(report_input, panel_name, results_intersect_unique)
-filter_denovo(report_input)
+    # Intersect with panel BED file(s)
+    results_intersect_unique = intersect(report_path, bedtools_input)
 
-print('\nDone.')
+    # Apply the panel and filter all de novo calls
+    apply_panel(report_input, panel_name, results_intersect_unique)
+    filter_denovo(report_input)
+
+    print('\nDone.')
