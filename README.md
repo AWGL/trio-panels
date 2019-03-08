@@ -119,6 +119,8 @@ BED files in the `validated_bed_files` folder are ready to be used for analysis.
 >
 > PanelApp ID can be found on the PanelApp website - navigate to the web page of the panel, the ID is the long string of letters and numbers labelled 'Previous code'. For example, the PanelApp ID for <https://panelapp.genomicsengland.co.uk/panels/245/> is 595ce30f8f62036352471f39. 
 >
+> ![PanelApp ID](PanelApp_screenshot.png)
+>
 > If there is no 'Previous code' heading, the ID is the number in the last section of the website path. For example, in <https://panelapp.genomicsengland.co.uk/panels/391/>, the PanelApp ID is 391.
 >
 > Always check that the name of the output file matches the name of the panel.
